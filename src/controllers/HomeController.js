@@ -4,7 +4,7 @@ class HomeController {
 
     //  [GET] /
     index(req, res,next) {
-        Zing.getInfoMusic('ZOWUA7ZO')
+        Zing.getLyric('ZOZ0WD80')
         // Zing.getSectionPlaylist('IWZ9Z097')
         // Zing.getDetailPlaylist('IWZ9Z08I')
         // Zing.getHome()

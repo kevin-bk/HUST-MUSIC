@@ -72,6 +72,15 @@ class ZingMp3 {
         });
     }
 
+    static getLyric(id) {
+        return this.requestZing({
+            path: '/api/v2/lyric',
+            qs: {
+                id
+            }
+        });
+    }
+
     static getHome(page = 1) {
         return this.requestZing({
             path: '/api/v2/home',

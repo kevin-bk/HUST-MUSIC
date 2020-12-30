@@ -1,39 +1,9 @@
-<head>
-    <link rel="stylesheet" href="">
-</head>
+<link rel="stylesheet" href="/player/APlayer.min.css">
+<link rel="stylesheet" href="/player/player.css">
 
-<audio id="player" controls autoplay loop preload="auto" style="display: none;">
-    <source
-        id="src"
-        src="asdad">
-</audio>
-<button id="btn">Đổi bài</button>
-<button id="test">Test</button>
+<div id="aplayer" class="myCssPlayer"></div>
 
-<script>
-    window.addEventListener("load", function () {
-        var player = $('#player')[0];
-        $('#btn').click(function () {
-            var x = document.createElement("SOURCE");
-            x.setAttribute("src", "...");
-            x.setAttribute("id", "src");
-            document.getElementById("player").removeChild(document.getElementById("src"));
-            document.getElementById("player").appendChild(x);
-            player.load();
-            player.play();
-        })
+{{!-- <button onclick="changeMode()" class="btn btn-primary">Change Mode</button> --}}
 
-        $('#test').click(function(){
-            fetch('/')
-                .then(function(response){
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data)
-                })
-                .catch(function(){
-                    console.log("fail")
-                })
-        })
-    });
-</script>
+<script src="/player/APlayer.min.js"></script>
+<script src="/js/player.js"></script>
