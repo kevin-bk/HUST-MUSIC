@@ -2,7 +2,7 @@
 function showChart(songs) {
     var htmls = songs.map(function (song) {
         return `
-                <li onclick="player(this,playOne)" data-id="${song.id}" class="mt-4 bxh-song" style="list-style-type:none">
+                <li onclick="playSong(this,playOne)" data-id="${song.id}" class="mt-4 bxh-song" style="list-style-type:none">
                     <img src = "${song.thumbnail}">
                     <h4 style="display: inline-block">${song.number}. ${song.name}</h4>
                     <h5 style="display: inline-block"> - ${song.performer}</h5>

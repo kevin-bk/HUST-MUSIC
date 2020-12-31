@@ -4,9 +4,9 @@ class HomeController {
 
     //  [GET] /
     index(req, res,next) {
-        Zing.getLyric('ZOZ0WD80')
-        // Zing.getSectionPlaylist('IWZ9Z097')
-        // Zing.getDetailPlaylist('IWZ9Z08I')
+        // Zing.getLyric('ZOZ0WD80')
+        // Zing.getSectionPlaylist('6707AA98')
+        Zing.getDetailPlaylist('6707AA98')
         // Zing.getHome()
             .then(data => res.json(data))
             .catch(err => res.json(err))

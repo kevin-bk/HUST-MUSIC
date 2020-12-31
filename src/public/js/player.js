@@ -1,17 +1,9 @@
-const url = 'https://vnno-vn-5-tf-mp3-s1-zmp3.zadn.vn/01318d6c272bce75973a/2540879074278059846?authen=exp=1609418068~acl=/01318d6c272bce75973a/*~hmac=6646474a06cac68845a0d3765e0fa600&fs=MTYwOTI0NTI2ODmUsIC3OHx3ZWJWNnwwfDEyMy4yMS4yNTIdUngMTk3'
 
 // Constructor
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
     lrcType: 3,
-    audio: [{
-        name: 'nàng thơ... trời giấu trời mang đi',
-        artist: 'AMEE, Hoàng Dũng',
-        url: url,
-        lrc: "https://static-zmp3.zadn.vn/lyrics/c/1/6/d/c16dd8af6ad7357b37fc1741bbdadef8.lrc",
-        cover: 'https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/8/7/a/4/87a40c0cbc8b577200b822eb4325bfdb.jpg'
-    }
-    ]
+    audio: [{}]
 });
 
 // Mini <--> Normal
@@ -20,6 +12,7 @@ function changeMode() {
         ap.setMode('normal');
         $('#aplayer').removeClass('miniPlayer');
         $('#aplayer').addClass('myCssPlayer');
+        $('.myCssPlayer').css('display', 'block');
         return;
     }
     $('#aplayer').removeClass('myCssPlayer');
@@ -27,7 +20,16 @@ function changeMode() {
     ap.setMode('mini');
 }
 
-function player(identifier, callback) {
+ap.on('play', function() {
+    $('.aplayer-pic').addClass('aplayer-pic-spin');
+});
+
+ap.on('pause', function() {
+    $('.aplayer-pic').removeClass('aplayer-pic-spin');
+});
+
+// Player
+function playSong(identifier, callback) {
     fetch('/api/getInfoMusic/' + $(identifier).data('id'))
         .then(function (res) {
             return res.json();
@@ -41,11 +43,18 @@ function player(identifier, callback) {
         })
 }
 
-// Get info Music [name, artist, url, cover]
+function init(){
+    $('.aplayer-lrc-contents').css('transform', 'translateY(0px)');
+    $('.myCssPlayer').css('display', 'block');
+}
+
 function playOne(song) {
     ap.list.clear();
     ap.list.add(song);
-    $('.aplayer-lrc-contents').css('transform', 'translateY(0px)');
+    init();
     ap.play();
 }
 
+function addToPlaylist(song) {
+    ap.list.add(song);
+}

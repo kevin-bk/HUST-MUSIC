@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laptop</title>
+    <title>HUST MP3</title>
+    <link rel="shortcut icon" href="/img/logo.png"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/fontawesome/css/all.min.css">
@@ -13,10 +14,17 @@
 
 <body>
     {{{body}}}
-    {{>player}}
-    {{>chart}}
+    
+    <div class="body" style="display: flex;">
+        <div class="grid-2" style="width: 240px; height: 100%">{{>menu}}</div>
+        <div class="grid-8" style="flex: 1;">
+            <div class="player_container" style="width: 100%; height: auto;">{{>player}}</div>
+            <div id="component" style="width: 100%;"></div>
+        </div>
+    </div>
 
     <script src="/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/js/controller.js"></script>
 </body>
 
 </html>

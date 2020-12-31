@@ -1,10 +1,6 @@
 .chart{
-    margin-top: 200px;
+    margin-top: 20px;
     margin-left: 30px;
-}
-
-li{
-    width: 80%;
 }
 
 li:hover{

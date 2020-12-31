@@ -1,0 +1,15 @@
+.logo{
+    background-color: #0e151f;
+    height: 50px;
+}
+.logo a {
+    height: 30px;
+    display: inline-block;
+    color: #fff;
+    line-height: 50px;
+    font-size: 32px;
+    font-family: Cabin Sketch,cursive;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+}
