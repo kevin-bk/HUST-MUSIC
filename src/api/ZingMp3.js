@@ -81,11 +81,39 @@ class ZingMp3 {
         });
     }
 
+    // GET PlayList theo Topic
+    static getDetail(id) {
+        return this.requestZing({
+            path: '/api/v2/hub/getDetail',
+            qs: {
+                id
+            }
+        });
+    }
+
     static getHome(page = 1) {
         return this.requestZing({
             path: '/api/v2/home',
             qs: {
                 page
+            }
+        });
+    }
+
+    static getTopic() {
+        return this.requestZing({
+            path: '/api/v2/hub/getHome',
+            qs: {
+            
+            }
+        });
+    }
+
+    static getTop100() {
+        return this.requestZing({
+            path: '/api/v2/top100',
+            qs: {
+            
             }
         });
     }

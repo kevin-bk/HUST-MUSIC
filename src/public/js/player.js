@@ -28,6 +28,10 @@ ap.on('pause', function() {
     $('.aplayer-pic').removeClass('aplayer-pic-spin');
 });
 
+ap.on('ended', function () {
+    playSong('#autoPlayNext', playOne);
+});
+
 // Player
 function playSong(identifier, callback) {
     fetch('/api/getInfoMusic/' + $(identifier).data('id'))
@@ -35,6 +39,7 @@ function playSong(identifier, callback) {
             return res.json();
         })
         .then(song => {
+            $('#autoPlayNext').data('id',song.next);
             callback(song);
         })
         .catch(function (err) {
@@ -46,6 +51,7 @@ function playSong(identifier, callback) {
 function init(){
     $('.aplayer-lrc-contents').css('transform', 'translateY(0px)');
     $('.myCssPlayer').css('display', 'block');
+    $("html, body").animate({ scrollTop: 0 }, "slow");
 }
 
 function playOne(song) {
@@ -57,4 +63,7 @@ function playOne(song) {
 
 function addToPlaylist(song) {
     ap.list.add(song);
+    ap.play();
 }
+
+// init()

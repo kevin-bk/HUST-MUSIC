@@ -1,4 +1,8 @@
 /* NORMAL */
+.aplayer{
+    background: none;
+}
+
 .aplayer-notice{
     display: none !important;
 }
@@ -18,7 +22,7 @@
 
 .myCssPlayer .aplayer-body{
     height: 150px;
-    background-color: #2c064a;
+    border-radius: 20px;
     background: linear-gradient(180deg,#114357,#9c757c);
 }
 
@@ -145,7 +149,7 @@
 }
 
 .ghim-tigger{
-    margin-bottom: 174px;
+    margin-bottom: 174px !important;
 }
 
 /* BTN DOWN */

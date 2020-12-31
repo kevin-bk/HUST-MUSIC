@@ -1,4 +1,9 @@
 const Zing = require('../api/ZingMp3');
+var DATE = new Date();
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
 
 class ApiController {
 
@@ -13,6 +18,7 @@ class ApiController {
                     url: data.streaming['128'],
                     cover: data.thumbnailM,
                     lrc: '',
+                    next: data.sections[0].items[getRandomInt(data.sections[0].items.length - 1)].encodeId,
                 }
                 return song;
             })
