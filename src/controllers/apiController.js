@@ -40,6 +40,29 @@ class ApiController {
             .catch(err => res.json(err))
     }
 
+    //  [GET] /api/getWeekChart:id
+    getWeekChart(req, res,next) {
+        Zing.getWeekChart(req.params.id)
+            .then(data => {
+                Zing.getDetailPlaylist(data.playlistId)
+                    .then(songs => {
+                        let data = songs.song.items.map( (song,index) => {
+                            return {
+                                id: song.encodeId,
+                                name: song.title,
+                                performer: song.artistsNames,
+                                thumbnail: song.thumbnailM,
+                                number: index + 1,
+                            }
+                        })
+                        return data;
+                    })
+                    .then(songs => res.json(songs))
+                    .catch(err => res.json(err))
+            })
+            .catch(err => res.json(err))
+    }
+
     //  [GET] /api/getSectionPlaylist:id
     getSectionPlaylist(req, res,next) {
         Zing.getSectionPlaylist(req.params.id)

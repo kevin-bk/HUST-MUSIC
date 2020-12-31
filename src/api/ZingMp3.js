@@ -54,6 +54,16 @@ class ZingMp3 {
 
     }
 
+    static getWeekChart(id) {
+        return this.requestZing({
+            path: '/api/v2/chart/getWeekChart',
+            qs: {
+                id
+            }
+        });
+
+    }
+
     static getInfoMusic(id) {
         return this.requestZing({
             path: '/api/v2/song/getInfo',

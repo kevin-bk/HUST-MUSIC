@@ -1,18 +1,22 @@
+var vn,us,kpop;
 
-function showChart(songs) {
-    var htmls = songs.map(function (song) {
-        return `
-                <li onclick="playSong(this,playOne)" data-id="${song.id}" class="mt-4 bxh-song" style="list-style-type:none;">
-                    <img src = "${song.thumbnail}">
-                    <h4 style="display: inline-block">${song.number}. ${song.name}</h4>
-                    <h5 style="display: inline-block"> - ${song.performer}</h5>
-                </li>
-            `;
+function showTop5(songs, des) {
+    var htmls = songs.map(function (song, index) {
+        if (index > 4) return '';
+        return '<div class="chart-item">'+
+        `                    <div class="number">${song.number}</div>`+
+        '                    <i class="fas fa-minus minus"></i>'+
+        `                    <img onclick="playSong(this,playOne)" data-id="${song.id}" src="${song.thumbnail}">`+
+        '                    <div class="name-artist">'+
+        `                        <span class="name">${song.name}</span>`+
+        `                        <span class="artist">${song.performer}</span>`+
+        '                    </div>'+
+        '                </div>';
     })
-    $('.chart').html(htmls.join(""));
+    $(des).html(htmls.join(""));
 }
 
-function getChartAPI() {
+function getChartVN(callback, des) {
     fetch('https://mp3.zing.vn/xhr/chart-realtime?songId=0&videoId=0&albumId=0&chart=song&time=-1')
         .then(response => response.json())
         .then(res => {
@@ -28,8 +32,30 @@ function getChartAPI() {
             return bxh;
         })
         .then(data => {
-            showChart(data);
+            vn = data;
+            callback(data, des);
         })
-}
+};
 
-getChartAPI();
+function getChartUS(callback, des) {
+    fetch('/api/getWeekChart/IWZ9Z0BW')
+        .then(response => response.json())
+        .then(data => {
+            us = data;
+            callback(data,des);
+        })
+};
+
+function getChartKpop(callback, des) {
+    fetch('/api/getWeekChart/IWZ9Z0BO')
+        .then(response => response.json())
+        .then(data => {
+            kpop = data;
+            callback(data,des);
+        })
+};
+
+
+getChartVN(showTop5,'.vn');
+getChartUS(showTop5, '.us-uk');
+getChartKpop(showTop5, '.kpop');

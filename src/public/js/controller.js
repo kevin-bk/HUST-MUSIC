@@ -31,23 +31,9 @@ $('.ghim').click(function(){
     $('.player-down').css('display','block');
 })
 
-// MENU
-// function getChart(){
-//     if (!chart){
-//         $('#component').load('../components/chart.html', function(){
-//             getChartAPI(function(){
-//                 chart = $('.chart-wraper').html();
-//             });
-//         });
-//     }
-//     else {
-//         $('#component').html(chart);
-//     }
-// }
-
 var data = { }
 
-function loadData(component){
+function loadComponent(component){
     if (!data[component]){
         $('#component').load(`../components/${component}.html`, function(){
             data[component] = $(`.${component}-wraper`).html();
