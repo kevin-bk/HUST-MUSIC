@@ -207,3 +207,39 @@
     z-index: 100;
     display: none;
 }
+
+/* PLAYLIST CSS */
+.aplayer-list{
+    background-color: #411465;
+    border-radius: 22px;
+}
+
+.aplayer .aplayer-list ol li:hover {
+    background: #74528f;
+}
+
+.aplayer-list-light {
+    background: #74528f !important;
+}
+
+.aplayer-list-author {
+    color: #fff !important;
+    opacity: .7;
+    float: right;
+    cursor: pointer;
+}
+
+.aplayer .aplayer-list ol li{
+    border-top: none !important;
+}
+
+.aplayer.aplayer-withlist .aplayer-info {
+    border-bottom: none !important;
+}
+
+.aplayer-list-index {
+    color: #fff;
+    opacity: .8;
+    margin-right: 12px;
+    cursor: pointer;
+}

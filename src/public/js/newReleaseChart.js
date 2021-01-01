@@ -8,5 +8,3 @@ function getNewReleaseChart(callback, des, store) {
             callback(data,des);
         })
 };
-
-getNewReleaseChart(showAll,'.vn', 'vn');

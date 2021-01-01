@@ -1,5 +1,8 @@
 var isFirst = true;
 var isPlayed = false;
+var playList = [];
+var currentSong = '';
+
 // Constructor
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
@@ -56,7 +59,6 @@ function playSong(identifier, callback) {
 function init(){
     $('.aplayer-lrc-contents').css('transform', 'translateY(0px)');
     $('.myCssPlayer').css('display', 'block');
-    // $("html, body").animate({ scrollTop: 0 }, "slow");
 }
 
 function playOne(song) {
@@ -64,6 +66,8 @@ function playOne(song) {
     ap.list.clear();
     ap.list.add(song);
     init();
+    playList = [];
+    playList.push(song.id);
     ap.play();
 }
 
@@ -72,9 +76,11 @@ function addToPlaylist(song) {
         ap.list.clear();
         isPlayed = true;
     }
-    ap.list.add(song);
-    ap.list.hide();
-    ap.play();
+    if (playList.includes(song.id)) return;
+    else {
+        playList.push(song.id);
+        ap.list.add(song);
+        ap.play();
+    }
 }
 
-// init()
