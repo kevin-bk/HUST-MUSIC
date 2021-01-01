@@ -5,6 +5,10 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
+function getTime(s){
+    return(s-(s%=60))/60+(9<s?':':':0')+s;
+}
+
 class ApiController {
 
     //  [GET] /api/getInfoMusic:id
@@ -52,6 +56,7 @@ class ApiController {
                                 name: song.title,
                                 performer: song.artistsNames,
                                 thumbnail: song.thumbnailM,
+                                duration: getTime(song.duration),
                                 number: index + 1,
                             }
                         })
@@ -95,6 +100,27 @@ class ApiController {
     getHome(req, res,next) {
         Zing.getHome(req.params.id)
             .then(data => res.json(data))
+            .catch(err => res.json(err))
+    }
+
+    //  [GET] /api/getNewReleaseChart
+    getNewReleaseChart(req, res,next) {
+        Zing.getNewReleaseChart(req.params.id)
+            .then(data => {
+                return data.items.map((item,index) => {
+                    return {
+                        id: item.encodeId,
+                        name: item.title,
+                        performer: item.artistsNames,
+                        thumbnail: item.thumbnailM,
+                        number: index + 1,
+                        duration: getTime(item.duration)
+                    }
+                })
+            })
+            .then(data => {
+                res.json(data);
+            })
             .catch(err => res.json(err))
     }
 }

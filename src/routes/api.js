@@ -10,6 +10,7 @@ router.get('/getSectionPlaylist/:id',apiController.getSectionPlaylist);
 router.get('/getDetailPlaylist/:id',apiController.getDetailPlaylist);
 router.get('/getStreaming/:id',apiController.getStreaming);
 router.get('/getLyric/:id',apiController.getLyric);
+router.get('/getNewReleaseChart',apiController.getNewReleaseChart);
 router.get('/getHome/:id',apiController.getHome);
 
 module.exports = router;

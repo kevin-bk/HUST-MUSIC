@@ -1,4 +1,4 @@
-
+//  PLLAYER CONTROLER
 $('.myCssPlayer').append('<i class="fas fa-chevron-circle-down player-down"></i>');
 $('.myCssPlayer').append('<i class="fas fa-thumbtack ghim" data-id="0"></i>');
 
@@ -13,6 +13,7 @@ $('.player-up').click(function(){
     changeMode();
     $('.player-up').css('display','none');
     $('.player-down').css('display','block');
+    scrollToTop();
 });
 
 $('.ghim').click(function(){
@@ -31,15 +32,33 @@ $('.ghim').click(function(){
     $('.player-down').css('display','block');
 })
 
-var data = { }
+function scrollToTop(){
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+}
 
+//  DOM
+var data = { }
 function loadComponent(component){
-    if (!data[component]){
-        $('#component').load(`../components/${component}.html`, function(){
-            data[component] = $(`.${component}-wraper`).html();
-        });
-    }
-    else {
-        $('#component').html(data[component]);
-    }
+    $('#component').load(`../components/${component}.html`);
+    return;
+}
+
+// SHOW ALL SONGS IN A PLAYLIST
+function showAll(songs, des) {
+    var htmls = songs.map(function (song, index) {
+        if (index == 99) return;
+        return '<div class="chart-item">'+
+        `            <div class="number">${song.number}</div>`+
+        `            <i class="fas fa-minus minus"></i>`+
+        `            <img onclick="playSong(this,playOne)" data-id="${song.id}" src="${song.thumbnail}">`+
+        `            <div class="name-artist">`+
+        `                <span class="name">${song.name}</span>`+
+        `                <span class="artist">${song.performer}</span>`+
+        `            </div>`+
+        `            <span class="duration">${song.duration}</span>`+
+        `            <i class="far fa-heart addToLib" data-id="${song.id}"></i>`+
+        `            <i onclick="playSong(this,addToPlaylist)" class="fas fa-plus addToList" data-id="${song.id}"></i>`+
+        `        </div>`;
+    })
+    $(des).html(htmls.join(""));
 }

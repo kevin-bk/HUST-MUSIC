@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HUST MP3 | Nghe nhạc chất lượng cao</title>
-    <link rel="shortcut icon" href="/img/logo.png"/>
+    <link rel="shortcut icon" href="/img/logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/fontawesome/css/all.min.css">
@@ -23,9 +23,22 @@
             <div id="component" style="width: 100%;"></div>
         </div>
     </div>
-
+    <i class="fas fa-chevron-circle-up scroll-top" id="toTop" style="display:none;"></i>
     <script src="/js/vendor/bootstrap.bundle.min.js"></script>
     <script src="/js/controller.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop()) {
+                $('#toTop').fadeIn();
+            } else {
+                $('#toTop').fadeOut();
+            }
+        });
+
+        $("#toTop").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 1000);
+        });
+    </script>
 </body>
 
 </html>

@@ -64,6 +64,16 @@ class ZingMp3 {
 
     }
 
+    static getNewReleaseChart() {
+        return this.requestZing({
+            path: '/api/v2/chart/getNewReleaseChart',
+            qs: {
+                
+            }
+        });
+
+    }
+
     static getInfoMusic(id) {
         return this.requestZing({
             path: '/api/v2/song/getInfo',

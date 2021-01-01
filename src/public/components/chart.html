@@ -1,50 +1,62 @@
-<head>
-    <link rel="stylesheet" href="../css/Chart.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/501bdd9c6f.js" crossorigin="anonymous"></script>
-</head>
+<div class="chart-wrapper">
 
-<div class="" style=" display: flex; justify-content:space-around; margin-top: 20px;">
-    <!-- here -->
-    <div class="chart-box">
-        <div class="box-header">
-            <a href="">Việt Nam</a>
-            <div class="chart-btn">
-                <i class="fas fa-play ic-play"></i>
-            </div>
-        </div>
-        <div class="chart-list vn"></div>
-        <div class="all">
-            <a class="show-all" href="#">Xem tất cả</a>
-        </div>
-    </div>
+    <head>
+        <link rel="stylesheet" href="../css/Chart.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/501bdd9c6f.js" crossorigin="anonymous"></script>
+    </head>
 
-    <!-- end -->
-    <div class="chart-box">
-        <div class="box-header">
-            <a href="">US-UK</a>
-            <div class="chart-btn">
-                <i class="fas fa-play ic-play"></i>
+    <div class="" style=" display: flex; justify-content:space-around; margin-top: 20px;">
+        <!-- here -->
+        <div class="chart-box">
+            <div class="box-header">
+                <a href="">Việt Nam</a>
+                <div class="chart-btn">
+                    <i class="fas fa-play ic-play"></i>
+                </div>
+            </div>
+            <div class="chart-list vn"></div>
+            <div class="all">
+                <a class="show-all" data-id="IWZ9Z08I" href="#">Xem tất cả</a>
             </div>
         </div>
-        <div class="chart-list us-uk"></div>
-        <div class="all">
-            <a class="show-all" href="#">Xem tất cả</a>
-        </div>
-    </div>
-    <div class="chart-box k-pop">
-        <div class="box-header">
-            <a href="">K-POP</a>
-            <div class="chart-btn">
-                <i class="fas fa-play ic-play"></i>
+
+        <!-- end -->
+        <div class="chart-box">
+            <div class="box-header">
+                <a href="">US-UK</a>
+                <div class="chart-btn">
+                    <i class="fas fa-play ic-play"></i>
+                </div>
+            </div>
+            <div class="chart-list us-uk"></div>
+            <div class="all">
+                <a class="show-all" data-id="IWZ9Z0BW" href="#">Xem tất cả</a>
             </div>
         </div>
-        <div class="chart-list kpop"></div>
-        <div class="all">
-            <a class="show-all" href="#">Xem tất cả</a>
+        <div class="chart-box k-pop">
+            <div class="box-header">
+                <a href="">K-POP</a>
+                <div class="chart-btn">
+                    <i class="fas fa-play ic-play"></i>
+                </div>
+            </div>
+            <div class="chart-list kpop"></div>
+            <div class="all">
+                <a class="show-all" data-id="IWZ9Z0BO" href="#">Xem tất cả</a>
+            </div>
         </div>
     </div>
+    <script src="../js/Chart.js"></script>
+    <script>
+        getChart(showTop5,'.vn', 'IWZ9Z08I', 'vn');
+        getChart(showTop5, '.us-uk', 'IWZ9Z0BW', 'us');
+        getChart(showTop5, '.kpop', 'IWZ9Z0BO', 'kpop');
+
+        $('.show-all').click(function(){
+            loadComponent('chartAll');
+            getChart(showAll, '.showAll', $(this).data('id'), 'current');
+        })
+    </script>
 </div>
-
-<script src="../js/Chart.js"></script>

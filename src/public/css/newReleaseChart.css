@@ -1,11 +1,9 @@
-body{
-    background-color: #37075d;
-}
 
 .chart-box{
-    width: 30%;
+    width: 96%;
     background-color: #ffffff0d;
     border-radius: 16px;
+    margin: 20px auto;
 }
 
 .box-header{
@@ -17,13 +15,13 @@ body{
     color: var(--text-item-hover);
     line-height: normal;
     width: 100%;
-    margin-top: 15px;
 }
 
-a{
+.box-header a{
     text-decoration: none;
     cursor: pointer;
     color: white;
+    margin-top: 10px;
 }
 
 .chart-btn {
@@ -35,6 +33,7 @@ a{
     justify-content: center;
     border-radius: 999px;
     background-color: #ed2b91;
+    margin-top: 9px;
     cursor: pointer;
 }
 
@@ -56,6 +55,7 @@ a{
     border-radius: 6px;
     margin-top: 3px;
     margin-bottom: 3px;
+    /* flex: 1; */
 }
 
 .chart-item:hover{
@@ -77,6 +77,8 @@ a{
     color: transparent;
     font-family: "Roboto",sans-serif;
     margin-top: 4px;
+    text-align: right;
+    color: #4a90e200 !important;
 }
 
 .minus{
@@ -84,6 +86,7 @@ a{
     opacity: .7;
     margin-top: 15px;
     font-size: 12px;
+    margin-left: 10px;
 }
 
 .chart-item img{
@@ -135,4 +138,25 @@ a{
     padding: 8px 68px;
     display: inline-block;
     margin: 15px auto;
+}
+
+.chart-box .duration{
+    flex: 1;
+    margin-top: 8px;
+    opacity: .9;
+    margin-left: 120px;
+}
+
+.addToList{
+    font-size: 15px;
+    margin-top: 12px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.addToLib{
+    font-size: 16px;
+    margin-top: 12px;
+    margin-right: 20px;
+    cursor: pointer;
 }

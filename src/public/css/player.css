@@ -1,6 +1,7 @@
 /* NORMAL */
 .aplayer{
     background: none;
+    /* width: 96%; */
 }
 
 .aplayer-notice{
@@ -23,7 +24,8 @@
 .myCssPlayer .aplayer-body{
     height: 150px;
     border-radius: 20px;
-    background: linear-gradient(180deg,#114357,#9c757c);
+    /* background: linear-gradient(180deg,#114357,#9c757c); */
+    background-color: #411465;
 }
 
 .myCssPlayer .aplayer-info{
@@ -79,7 +81,7 @@
 
 /* init */
 .myCssPlayer .aplayer-icon-back, .myCssPlayer .aplayer-icon-forward, .myCssPlayer .aplayer-icon-order, .myCssPlayer .aplayer-icon-play{
-    display: inline-block;
+    display: inline-block !important;
 }
 .myCssPlayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path{
     fill: #fff;
@@ -139,8 +141,8 @@
 
 .player-ghim{
     position: fixed;
-    left: 240px;
-    right: 0;
+    left: 262px;
+    right: 23px;
     z-index: 100;
 }
 

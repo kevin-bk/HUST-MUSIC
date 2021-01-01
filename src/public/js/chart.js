@@ -1,4 +1,3 @@
-var vn,us,kpop;
 
 function showTop5(songs, des) {
     var htmls = songs.map(function (song, index) {
@@ -16,46 +15,13 @@ function showTop5(songs, des) {
     $(des).html(htmls.join(""));
 }
 
-function getChartVN(callback, des) {
-    fetch('https://mp3.zing.vn/xhr/chart-realtime?songId=0&videoId=0&albumId=0&chart=song&time=-1')
-        .then(response => response.json())
-        .then(res => {
-            var bxh = res.data.song.map(function (data, index) {
-                return {
-                    id: data.id,
-                    name: data.name,
-                    performer: data.performer,
-                    thumbnail: data.thumbnail,
-                    number: index + 1,
-                }
-            })
-            return bxh;
-        })
-        .then(data => {
-            vn = data;
-            callback(data, des);
-        })
-};
+var chart = {};
 
-function getChartUS(callback, des) {
-    fetch('/api/getWeekChart/IWZ9Z0BW')
+function getChart(callback, des, id, store) {
+    fetch('/api/getWeekChart/' + id)
         .then(response => response.json())
         .then(data => {
-            us = data;
+            chart[store] = data;
             callback(data,des);
         })
 };
-
-function getChartKpop(callback, des) {
-    fetch('/api/getWeekChart/IWZ9Z0BO')
-        .then(response => response.json())
-        .then(data => {
-            kpop = data;
-            callback(data,des);
-        })
-};
-
-
-getChartVN(showTop5,'.vn');
-getChartUS(showTop5, '.us-uk');
-getChartKpop(showTop5, '.kpop');
