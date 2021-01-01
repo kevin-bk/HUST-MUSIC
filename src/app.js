@@ -3,20 +3,20 @@ const exphbs = require('express-handlebars');
 var methodOverride = require("method-override");
 var path = require('path');
 const route = require('./routes/index');
-const con = require("./db/db.js");
+// const con = require("./db/db.js");
 const cookieParser = require('cookie-parser')
-const sessionMiddleware = require('./middlewares/session.middleware.js');
+// const sessionMiddleware = require('./middlewares/session.middleware.js');
 
 const app = express()
 const port = 3001;
 
 // connecting route to database
-app.use(function(req, res, next) {
-    req.con = con
-    next();
-  })
+// app.use(function(req, res, next) {
+//     req.con = con
+//     next();
+//   })
 app.use(cookieParser("qwerty3120"));
-app.use(sessionMiddleware);
+// app.use(sessionMiddleware);
 
 app.use(express.urlencoded({
     extended: true
