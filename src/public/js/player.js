@@ -1,6 +1,7 @@
 var isFirst = true;
 var isPlayed = false;
 var playList = [];
+var listSong = [];
 var currentSong = '';
 
 // Constructor
@@ -68,11 +69,13 @@ function playOne(song) {
     ap.list.add(song);
     init();
     playList = [];
+    listSong = [];
     playList.push(song.id);
+    listSong.push(song);
     ap.play();
 }
 
-function addToPlaylist(song) {
+function addToPlaylist(song, isPlay = true) {
     if (!isPlayed){
         ap.list.clear();
         isPlayed = true;
@@ -80,8 +83,38 @@ function addToPlaylist(song) {
     if (playList.includes(song.id)) return;
     else {
         playList.push(song.id);
+        listSong.push(song);
         ap.list.add(song);
-        ap.play();
+        if (isPlay) ap.play();
     }
 }
 
+function playThisList(identifier){
+    fetch('/api/getDetailPlaylist/' + $(identifier).data('id'))
+    .then(function (res) {
+        return res.json();
+    })
+    .then(data => {
+        playList = [];
+        listSong = [];
+        ap.list.clear();
+        data.songs.map((song, index) => {
+            fetch('/api/getInfoMusic/' + song.id)
+            .then(function (res) {
+                return res.json();
+            })
+            .then(item => {
+                if (!item.name) return;
+                addToPlaylist(item);
+                if (isFirst){
+                    $('.player-down').click();
+                    isFirst = false;
+                }
+            })
+        })
+    })
+    .catch(function (err) {
+        console.log(err)
+        console.log('err occur')
+    })
+}

@@ -2,7 +2,7 @@
 function showPlayList(data, des1, des2) {
     var html1 = `<img src="${data.thumbnail}" alt="">`+
     `        <span>${data.title}</span>`+
-    `        <button class="playAll">`+
+    `        <button onclick="playThisList(this);" data-id="${data.id}" class="playAll">`+
     `            <span>Phát tất cả</span>`+
     `        </button>`;
     var html2 = data.songs.map(function (song, index) {
