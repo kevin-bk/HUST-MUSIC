@@ -48,6 +48,7 @@ class ApiController {
     getWeekChart(req, res,next) {
         Zing.getWeekChart(req.params.id)
             .then(data => {
+                const playlistId = data.playlistId;
                 Zing.getDetailPlaylist(data.playlistId)
                     .then(songs => {
                         let data = songs.song.items.map( (song,index) => {
@@ -58,6 +59,7 @@ class ApiController {
                                 thumbnail: song.thumbnailM,
                                 duration: getTime(song.duration),
                                 number: index + 1,
+                                playlistId: playlistId,
                             }
                         })
                         return data;

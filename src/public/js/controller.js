@@ -46,6 +46,7 @@ function loadComponent(component){
 // SHOW ALL SONGS IN A PLAYLIST
 function showAll(songs, des) {
     var htmls = songs.map(function (song, index) {
+        $('.chart-btn').attr('data-id', song.playlistId);
         if (index == 99) return;
         return '<div class="chart-item">'+
         `            <div class="number">${song.number}</div>`+
