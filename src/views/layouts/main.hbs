@@ -28,8 +28,11 @@
     <script src="/js/controller.js"></script>
     <script src="/js/newReleaseChart.js"></script>
     <script src="/js/Chart.js"></script>
+    <script src="/js/discover.js"></script>
 
     <script>
+        loadComponent('discover');
+
         $(window).scroll(function () {
             if ($(this).scrollTop()) {
                 $('#toTop').fadeIn();
