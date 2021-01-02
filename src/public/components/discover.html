@@ -60,5 +60,11 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<script>
+    $('.item').click(function() {
+        loadComponent('playList');
+        getPlayList($(this).data('id'), showPlayList, '.playList-header' , ".playList")
+    })
+</script>

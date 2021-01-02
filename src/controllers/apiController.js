@@ -78,7 +78,27 @@ class ApiController {
     //  [GET] /api/getDetailPlaylist:id
     getDetailPlaylist(req, res,next) {
         Zing.getDetailPlaylist(req.params.id)
-            .then(data => res.json(data))
+            .then(data => {
+                let songs = data.song.items.map((item,index) => {
+                    return {
+                        id: item.encodeId,
+                        name: item.title,
+                        performer: item.artistsNames,
+                        thumbnail: item.thumbnailM,
+                        number: index + 1,
+                        duration: getTime(item.duration)
+                    }
+                })
+                return {
+                    id: data.encodeId,
+                    title: data.title,
+                    thumbnail: data.thumbnailM,
+                    songs: songs
+                }
+            })
+            .then(data => {
+                res.json(data);
+            })
             .catch(err => res.json(err))
     }
 

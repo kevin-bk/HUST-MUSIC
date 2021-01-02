@@ -43,6 +43,7 @@ function playSong(identifier, callback) {
             return res.json();
         })
         .then(song => {
+            if (!song.name) return;
             $('#autoPlayNext').data('id',song.next);
             if (isFirst){
                 $('.player-down').click();
